@@ -86,6 +86,13 @@
 			return FieldManager::saveSettings($id, $fields);
 		}
 
+		/**
+		 * Exclude field from DS output.
+		 */
+		public function fetchIncludableElements() {
+ 			return null;
+ 		}
+
 	/*-------------------------------------------------------------------------
 		Publish:
 	-------------------------------------------------------------------------*/
