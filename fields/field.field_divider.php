@@ -13,8 +13,10 @@
 				"CREATE TABLE IF NOT EXISTS `tbl_entries_data_" . $this->get('id') . "` (
 				  `id` int(11) unsigned NOT NULL auto_increment,
 				  `entry_id` int(11) unsigned NOT NULL,
+				  `value` double default NULL,
 				  PRIMARY KEY  (`id`),
-				  KEY `entry_id` (`entry_id`)
+				  KEY `entry_id` (`entry_id`),
+				  KEY `value` (`value`)
 				) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
 			);
 		}
@@ -106,5 +108,13 @@
 			if ($this->get('margin') != '') {
 				$wrapper->setAttribute('style', 'margin: ' . $this->get('margin') . ';');
 			}
+		}
+
+		public function processRawFieldData($data, &$status, &$message = NULL, $simulate = false, $entry_id = NULL) {
+			$status = self::__OK__;
+
+			return array(
+				'value' => ''
+			);
 		}
 	}
