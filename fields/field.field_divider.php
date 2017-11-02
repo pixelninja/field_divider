@@ -92,7 +92,8 @@
 
 		public function displayPublishPanel(XMLElement &$wrapper, $data = NULL, $flagWithError = NULL, $fieldnamePrefix = NULL, $fieldnamePostfix = NULL, $entry_id = NULL){
 			if ($this->get('show-label') == 'yes') {
-				$wrapper->setValue($this->get('label'));
+				$group = new XMLElement('p', $this->get('label'));
+				$wrapper->appendChild($group);
 			}
 
 			if ($this->get('margin') !== '') {
