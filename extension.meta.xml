@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="field_divider" status="experimental" xmlns="http://getsymphony.com/schemas/extension/1.0">
+<extension id="field_divider" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Field Divider</name>
 	<description>Add a divider between fields.</description>
 	<repo type="github">https://github.com/pixelninja/field_divider</repo>
@@ -15,6 +15,6 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="0.1" date="2017-11-02" min="2.7.x" />
+		<release version="1.0" date="2017-11-02" min="2.7.x" />
 	</releases>
 </extension>
