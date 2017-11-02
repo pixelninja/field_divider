@@ -96,7 +96,7 @@
 				$wrapper->appendChild($group);
 			}
 
-			if ($this->get('margin') !== '') {
+			if ($this->get('margin') != '') {
 				$wrapper->setAttribute('style', 'margin: ' . $this->get('margin') . ';');
 			}
 		}
