@@ -117,4 +117,27 @@
 				'value' => ''
 			);
 		}
+
+		public function prepareReadableValue($data, $entry_id = NULL, $truncate = false, $defaultValue = NULL) {
+			return $this->prepareTableValue($data, null, $entry_id);
+		}
+
+		public function prepareTableValue($data, XMLElement $link=NULL, $entry_id=NULL) {
+			// build this entry fully
+			$entries = EntryManager::fetch($entry_id);
+
+			if ($entries === false) return parent::prepareTableValue(NULL, $link, $entry_id);
+
+			$entry = reset(EntryManager::fetch($entry_id));
+
+			// get the first field inside this tab
+			$field_id = Symphony::Database()->fetchVar('id', 0, "SELECT `id` FROM `tbl_fields` WHERE `parent_section` = '".$this->get('parent_section')."' AND `sortorder` = ".($this->get('sortorder') + 1)." ORDER BY `sortorder` LIMIT 1");
+
+			if ($field_id === NULL) return parent::prepareTableValue(NULL, $link, $entry_id);
+
+			$field = FieldManager::fetch($field_id);
+
+			// get the first field's value as a substitude for the tab's return value
+			return $field->prepareTableValue($entry->getData($field_id), $link, $entry_id);
+		}
 	}
